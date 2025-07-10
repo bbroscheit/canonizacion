@@ -12,7 +12,7 @@ import { QuoteNode } from '@lexical/rich-text';
 import { ListNode, ListItemNode } from '@lexical/list';
 import { CodeNode } from '@lexical/code';
 import { TextNode, ParagraphNode } from 'lexical';
-import { UnderlineNode } from '@lexical/format';
+//import { UnderlineNode } from '@lexical/format';
 import "@/styles/Home.module.css";
 import ToolbarPlugin from "./ToolbarPlugin";
 import { $getRoot } from "lexical";
@@ -53,7 +53,7 @@ export default function LexicalEditor({ value, onChange }) {
       CodeNode,
       ParagraphNode,
       TextNode,
-      UnderlineNode,
+      //UnderlineNode,
     ],
   };
 

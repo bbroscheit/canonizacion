@@ -23,9 +23,9 @@ export default function ToolbarPlugin() {
       </button>
 
       {/* Subrayado */}
-      <button type="button" onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline")}>
+      {/* <button type="button" onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, "underline")}>
         Underline
-      </button>
+      </button> */}
 
       {/* Alineación */}
       <button type="button" onClick={() => editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "left")}>
