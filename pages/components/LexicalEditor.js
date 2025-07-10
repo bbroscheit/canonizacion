@@ -14,12 +14,15 @@ import { CodeNode } from '@lexical/code';
 import { TextNode, ParagraphNode } from 'lexical';
 //import { UnderlineNode } from '@lexical/format';
 import "@/styles/Home.module.css";
-import ToolbarPlugin from "./ToolbarPlugin";
+import dynamic from "next/dynamic";
+// import ToolbarPlugin from "./ToolbarPlugin";
 import { $getRoot } from "lexical";
+
+const ToolbarPlugin = dynamic(() => import("./ToolbarPlugin"), { ssr: false });
 
 function PreloadHTMLPlugin({ value }) {
   const [editor] = useLexicalComposerContext();
-
+  
   useEffect(() => {
     if (!value) return;
 
