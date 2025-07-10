@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import LexicalEditor from "../components/LexicalEditor";
+import dynamic from 'next/dynamic';
+// import LexicalEditor from "../components/LexicalEditor";
+
+const LexicalEditor = dynamic(() => import('../components/LexicalEditor'), {
+  ssr: false,
+  loading: () => <div>Cargando editor...</div>
+});
 
 export default function Dashboard() {
   const [noticias, setNoticias] = useState([]);

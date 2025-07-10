@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect } from "react";
 import { $generateHtmlFromNodes, $generateNodesFromDOM } from "@lexical/html";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
@@ -18,7 +20,10 @@ import dynamic from "next/dynamic";
 // import ToolbarPlugin from "./ToolbarPlugin";
 import { $getRoot } from "lexical";
 
-const ToolbarPlugin = dynamic(() => import("./ToolbarPlugin"), { ssr: false });
+const ToolbarPlugin = dynamic(() => import("./ToolbarPlugin"), {
+  ssr: false,
+  loading: () => null, // opcional: evitar contenido intermedio
+});
 
 function PreloadHTMLPlugin({ value }) {
   const [editor] = useLexicalComposerContext();
