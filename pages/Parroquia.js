@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from '../styles/Parroquia.module.css'
 import Image from 'next/image'
-import Iglesia1 from '../pages/images/iglesia1.jpg'
-import Iglesia2 from '../pages/images/iglesia2.jpg'
-import Iglesia3 from '../pages/images/iglesia3.jpg'
+// import Iglesia1 from '../pages/images/iglesia1.jpg'
+// import Iglesia2 from '../pages/images/iglesia2.jpg'
+// import Iglesia3 from '../pages/images/iglesia3.jpg'
 
 
 export default function Parroquia() {

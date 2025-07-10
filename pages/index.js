@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Imagen1 from '../pages/images/imagen1.jpg'
-import Imagen2 from '../pages/images/imagen2.jpg'
-import Imagen3 from '../pages/images/imagen3.jpg'
+// import Imagen1 from '../pages/images/imagen1.jpg'
+// import Imagen2 from '../pages/images/imagen2.jpg'
+// import Imagen3 from '../pages/images/imagen3.jpg'
 
 
 export default function Home() {
