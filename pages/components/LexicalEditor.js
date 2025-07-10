@@ -1,29 +1,50 @@
-import React from "react";
-import { $generateHtmlFromNodes } from "@lexical/html"
+import React, { useEffect } from "react";
+import { $generateHtmlFromNodes, $generateNodesFromDOM } from "@lexical/html";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
-import { ParagraphNode, TextNode } from "lexical";
-import { $getRoot, $getSelection } from "lexical";
-import { UnderlineNode } from "@lexical/rich-text";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import {
+  HeadingNode,
+  QuoteNode,
+  ListNode,
+  ListItemNode,
+  CodeNode,
+  ParagraphNode,
+  TextNode,
+  UnderlineNode,
+} from "@lexical/rich-text";
 import "@/styles/Home.module.css";
-
-import { HeadingNode, QuoteNode } from "@lexical/rich-text";
-import { ListNode, ListItemNode } from "@lexical/list";
-import { CodeNode } from "@lexical/code";
 import ToolbarPlugin from "./ToolbarPlugin";
+import { $getRoot } from "lexical";
+
+function PreloadHTMLPlugin({ value }) {
+  const [editor] = useLexicalComposerContext();
+
+  useEffect(() => {
+    if (!value) return;
+
+    editor.update(() => {
+      const parser = new DOMParser();
+      const dom = parser.parseFromString(value, "text/html");
+      const nodes = $generateNodesFromDOM(editor, dom);
+      const root = $getRoot();
+      root.clear();
+      root.append(...nodes);
+    });
+  }, [value, editor]);
+
+  return null;
+}
 
 export default function LexicalEditor({ value, onChange }) {
   const initialConfig = {
     namespace: "MyEditor",
     theme: {
       paragraph: "editor-paragraph",
-    },
-    text: {
-      underline: "underline",
     },
     onError: (error) => {
       console.error("Lexical error:", error);
@@ -49,21 +70,21 @@ export default function LexicalEditor({ value, onChange }) {
       >
         <RichTextPlugin
           contentEditable={<ContentEditable className="editor-input" />}
-          placeholder={
-            <div className="editor-placeholder">Escribí algo...</div>
-          }
+          placeholder={<div className="editor-placeholder">Escribí algo...</div>}
           ErrorBoundary={LexicalErrorBoundary}
         />
+        <PreloadHTMLPlugin value={value} />
         <HistoryPlugin />
         <OnChangePlugin
           onChange={(editorState, editor) => {
-    editorState.read(() => {
-      const htmlString = $generateHtmlFromNodes(editor, null);
-      onChange(htmlString); // esto guarda HTML en vez de solo texto
-    });
-  }}
+            editorState.read(() => {
+              const htmlString = $generateHtmlFromNodes(editor, null);
+              onChange(htmlString);
+            });
+          }}
         />
       </div>
     </LexicalComposer>
   );
 }
+
