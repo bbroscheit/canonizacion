@@ -1,0 +1,48 @@
+.parroquiaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* separación entre video y texto */
+}
+.videoWrapper {
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+.video-wrapper iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.textContainer{
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f9f9f9; /* fondo claro para el texto */
+    border-radius: 8px; /* bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* sombra sutil */
+}
+
+.title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 40px;
+  color: #2c2c2c;
+  text-decoration: underline;
+}
+
+.image{
+  float: left;
+  margin: 0 1rem 1rem 0;
+  width: 40%; /* adaptá según necesidad */
+  max-width: 200px;
+}
+
+.imageRight{
+  float: right;
+  margin: 0 0 1rem 1rem;
+  width: 40%; /* adaptá según necesidad */
+  max-width: 200px;
+}

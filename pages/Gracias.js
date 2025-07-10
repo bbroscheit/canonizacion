@@ -1,8 +1,29 @@
 import { useState } from "react";
 import Head from "next/head";
+import prisma from '../lib/prisma'
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules"; // 👈 IMPORTANTE
+import "swiper/css";
 import styles from "../styles/Gracias.module.css";
 
-export default function Gracias() {
+export async function getServerSideProps() {
+  const graciasRecibidasRaw = await prisma.gracias.findMany({
+    take: 10,
+    orderBy: { fechaCreacion: "desc" },
+  });
+
+  const graciasRecibidas = graciasRecibidasRaw.map((gracia) => ({
+    ...gracia,
+    fechaCreacion: gracia.fechaCreacion.toISOString(), // <-- string
+  }));
+
+  return {
+    props: { graciasRecibidas },
+  };
+}
+
+export default function Gracias({ graciasRecibidas } ) {
+  
   const [form, setForm] = useState({ nombre: "", email: "", comentario: "" });
   const [enviado, setEnviado] = useState(false);
 
@@ -17,7 +38,12 @@ export default function Gracias() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
-    if (res.ok) setEnviado(true);
+    if (res.ok) {
+    setEnviado(true);
+    setTimeout(() => {
+      location.reload();
+    }, 1000); // espera 1 segundo
+  }
   };
 
   return (
@@ -26,36 +52,39 @@ export default function Gracias() {
         <title>Gracias Recibidas</title>
       </Head>
       <div className={styles.container}>
-        <h1 className="text-3xl font-bold mb-6 text-center">
+        <h1 className={styles.title}>
           Gracias recibidas
         </h1>
-
-        {/* Muro de gracias */}
-        <div className="space-y-6 mb-12">
-          {/* Acá deberías mapear mensajes si los vas a guardar en base de datos */}
-          <div className="border p-4 rounded shadow">
-            <p>
-              <strong>Juan Pérez</strong> – 10/06/2025
-            </p>
-            <p>Gracias por el milagro recibido. ¡Estoy muy agradecido!</p>
-          </div>
-          <div className="border p-4 rounded shadow">
-            <p>
-              <strong>María López</strong> – 22/06/2025
-            </p>
-            <p>Fray Mamerto intercedió por la salud de mi mamá. ¡Gracias!</p>
-          </div>
-          {/* más agradecimientos... */}
+        <Swiper
+          className={styles.swiperContainer}
+          modules={[Autoplay]}
+          spaceBetween={1}
+          slidesPerView={2}
+          loop={true}
+          autoplay={{ delay: 1000 }}
+          style={{ paddingBottom: "1rem" }}
+>
+      {graciasRecibidas && graciasRecibidas.map(({ id, nombre, comentario, fechaCreacion }) => (
+        <SwiperSlide key={id}>
+          <div className={styles.graciasCard}>
+          <h4 className={styles.nombreCard}>
+            {nombre}
+          </h4>
+          <p className={styles.fechaCreacionCard}>{new Date(fechaCreacion).toLocaleDateString("es-AR")} </p>
+          <p className={styles.comentarioCard}>{comentario}</p>
         </div>
-
-        <h2 className="text-2xl font-semibold mb-4">Enviar agradecimiento</h2>
+      </SwiperSlide>
+      ))}
+      </Swiper>
+        
+        <h2 className="text-2xl font-semibold mb-4">Envía tu agradecimiento</h2>
 
         {enviado ? (
-          <p className="text-green-600 font-semibold">
+          <p className={styles.mensajeExito}>
             ¡Gracias por tu mensaje!
           </p>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className={styles.form}>
             <input
               type="text"
               name="nombre"
@@ -63,7 +92,7 @@ export default function Gracias() {
               value={form.nombre}
               onChange={handleChange}
               required
-              className="w-full border p-2 rounded"
+              
             />
             <input
               type="email"
@@ -72,7 +101,7 @@ export default function Gracias() {
               value={form.email}
               onChange={handleChange}
               required
-              className="w-full border p-2 rounded"
+              
             />
             <textarea
               name="comentario"
@@ -80,11 +109,15 @@ export default function Gracias() {
               value={form.comentario}
               onChange={handleChange}
               required
-              className="w-full border p-2 rounded h-40"
+              maxLength={500}
+              
             />
+            <p className={styles.contadorCaracteres}>
+              {form.comentario.length}/500 caracteres
+            </p>
             <button
               type="submit"
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+              
             >
               Enviar
             </button>

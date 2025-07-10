@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import LexicalEditor from "../components/LexicalEditor";
 
 export default function Dashboard() {
   const [noticias, setNoticias] = useState([]);
@@ -10,6 +11,7 @@ export default function Dashboard() {
   });
   const [editId, setEditId] = useState(null);
   const router = useRouter();
+  
 
   const fetchNoticias = async () => {
     const res = await fetch("/api/noticias");
@@ -99,14 +101,18 @@ export default function Dashboard() {
           required
           onChange={(e) => setForm({ ...form, imagen: e.target.files[0] })}
         />
-        <textarea
+        <LexicalEditor
+          value={form.contenido}
+          onChange={(newValue) => setForm({ ...form, contenido: newValue })}
+        />
+        {/* <textarea
           placeholder="Contenido"
           value={form.contenido}
           onChange={(e) => setForm({ ...form, contenido: e.target.value })}
           required
           rows="5"
           style={{ display: "block", width: "100%", marginBottom: 10 }}
-        />
+        /> */}
         <button type="submit">{editId ? "Actualizar" : "Crear"}</button>
       </form>
 

@@ -1,12 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
+import styles from '../../styles/Header.module.css'
+
 
 export default function Header() {
   return (
-    <header className="bg-white shadow-md py-4 px-8">
-      <nav className="flex justify-between items-center max-w-6xl mx-auto">
-        <h1 className="text-xl font-bold">Parroquia del Líbano</h1>
-        <ul className="flex gap-6">
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <h1 className={styles.title}>Parroquia del Líbano</h1>
+        <ul className={styles.ul}>
           <li><Link href="/">Inicio</Link></li>
           <li><Link href="/Parroquia">Parroquia del Líbano</Link></li>
           <li><Link href="/Gracias">Gracias Recibidas</Link></li>

@@ -1,0 +1,64 @@
+.actualidadContainer{
+    display: "flex";
+    flex-direction: "column";
+    align-items: "center";
+    justify-content: "center";
+    padding: "2rem";
+    max-width: "800px";
+    margin: "0 auto";
+}
+
+.title {
+  text-align: center;
+  font-size: 2em;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #2c2c2c;
+  text-decoration: underline;
+}
+
+.articleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: "1px solid #ddd";
+  border-radius: 1rem;
+  background-color: rgba(255, 253, 253, 0.233);
+  backdrop-filter: blur(2px);
+  box-shadow: "0 2px 5px rgba(0,0,0,0.05)";
+  color: #424242;
+}   
+
+.articleTitle {
+  color: #0070f3;
+  cursor: pointer;
+  margin-bottom: 0px;
+}
+
+.articleDate{
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0px;
+}
+
+.articleImage{
+    width: 80%;
+    height: auto;
+    margin-top: 1rem;
+    border-radius: 4px;
+}
+
+.articleDescription {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+
+
+
+

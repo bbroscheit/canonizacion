@@ -1,4 +1,4 @@
-.container {
+.contactoContainer {
   max-width: 100%;
   margin: 100px auto;
   padding: 40px;
@@ -16,46 +16,6 @@
   margin-bottom: 40px;
   color: #2c2c2c;
   text-decoration: underline;
-}
-
-.nombreCard{
-  font-size: 1.1em;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 0px;
-}
-
-.graciasCard{
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  width: 85%;
-  min-height: 10rem;
-}
-
-.comentarioCard{
-  font-size: 1em;
-  color: #555;
-  margin-top: 10px;
-  text-align: justify;
-}
-
-.fechaCreacionCard{
-  font-size: 0.7em;
-  color: #999;
-  margin-top: 0px;
-  text-align: center;
-}
-
-.swiperContainer{
-  width: 100%;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .form {

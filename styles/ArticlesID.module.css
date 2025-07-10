@@ -1,0 +1,27 @@
+.noticiaContainer{
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 60px;
+    background-color:rgba(255, 253, 253, 0.233);
+    backdrop-filter: blur(2px);
+    color: #424242;
+    border-radius: 1rem;
+}
+
+.title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 40px;
+  color: #2c2c2c;
+  text-decoration: underline;
+}
+
+.contenido{
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-family: Georgia, serif;
+    line-height: 1.5;
+    color: #333;
+    text-align: justify;
+}

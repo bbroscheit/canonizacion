@@ -1,22 +1,97 @@
 .container {
   max-width: 800px;
   margin: 80px auto;
-  padding: 20px;
+  padding: 10px;
   font-family: Georgia, serif;
   line-height: 1.8;
   color: #333;
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 
 .title {
   text-align: center;
-  font-size: 2.2em;
+  font-size: 2em;
   margin-bottom: 40px;
   color: #2c2c2c;
   text-decoration: underline;
 }
 
+.articleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  border-radius: 1rem;
+  background-color:rgba(255, 253, 253, 0.233);
+  backdrop-filter: blur(2px);
+  color: #424242;
+}
+
 .article p {
   margin-bottom: 20px;
   text-align: justify;
+  padding: 0 20px;
 }
+
+.editor-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.editor-input {
+  min-height: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  outline: none;
+}
+
+.editor-placeholder {
+  color: #888;
+  position: absolute;
+  pointer-events: none;
+}
+
+.editor-paragraph {
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.toolbar button {
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.toolbar select,
+.toolbar input[type="color"] {
+  padding: 3px;
+}
+
+.editor-container [style*="font-size"] {
+  font-size: var(--lexical-font-size, inherit);
+}
+
+.image{
+  float: left;
+  margin: 0 1rem 1rem 0;
+  width: 40%; /* adaptá según necesidad */
+  max-width: 200px;
+}
+
+.imageRight{
+  float: right;
+  margin: 0 0 1rem 1rem;
+  width: 40%; /* adaptá según necesidad */
+  max-width: 200px;
+}
+
+

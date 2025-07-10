@@ -27,3 +27,11 @@ model Noticia {
   imagenUrl     String
   fechaCreacion DateTime @default(now())
 }
+
+model Gracias {
+  id            Int      @id @default(autoincrement())
+  nombre        String
+  email         String
+  comentario     String
+  fechaCreacion DateTime @default(now())
+}
