@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@lexical/html": "^0.32.1",
+    "@lexical/list": "^0.33.0",
     "@lexical/react": "^0.32.1",
     "@lexical/rich-text": "^0.32.1",
     "@lexical/text": "^0.32.1",

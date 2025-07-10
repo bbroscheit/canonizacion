@@ -7,16 +7,13 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
-import {
-  HeadingNode,
-  QuoteNode,
-  ListNode,
-  ListItemNode,
-  CodeNode,
-  ParagraphNode,
-  TextNode,
-  UnderlineNode,
-} from "@lexical/rich-text";
+import { HeadingNode } from '@lexical/rich-text';
+import { QuoteNode } from '@lexical/rich-text';
+import { ListNode, ListItemNode } from '@lexical/list';
+import { CodeNode } from '@lexical/code';
+import { ParagraphNode } from '@lexical/paragraph';
+import { TextNode } from 'lexical';
+import { UnderlineNode } from '@lexical/underline';
 import "@/styles/Home.module.css";
 import ToolbarPlugin from "./ToolbarPlugin";
 import { $getRoot } from "lexical";
