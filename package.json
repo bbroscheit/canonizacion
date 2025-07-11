@@ -9,9 +9,6 @@
     "lint": "next lint",
     "preinstall": "npx npm-force-resolutions"
   },
-  "resolutions": {
-    "@lexical/react": "^0.33.0"
-  },
   "dependencies": {
     "@lexical/clipboard": "^0.33.0",
     "@lexical/hashtag": "^0.33.0",
