@@ -3,10 +3,10 @@ import { useRouter } from "next/router";
 import dynamic from 'next/dynamic';
 // import LexicalEditor from "../components/LexicalEditor";
 
-const LexicalEditor = dynamic(() => import('../components/LexicalEditor'), {
-  ssr: false,
-  loading: () => <div>Cargando editor...</div>
-});
+// const LexicalEditor = dynamic(() => import('../components/LexicalEditor'), {
+//   ssr: false,
+//   loading: () => <div>Cargando editor...</div>
+// });
 
 export default function Dashboard() {
   const [noticias, setNoticias] = useState([]);
@@ -107,18 +107,18 @@ export default function Dashboard() {
           required
           onChange={(e) => setForm({ ...form, imagen: e.target.files[0] })}
         />
-        <LexicalEditor
+        {/* <LexicalEditor
           value={form.contenido}
           onChange={(newValue) => setForm({ ...form, contenido: newValue })}
-        />
-        {/* <textarea
+        /> */}
+        <textarea
           placeholder="Contenido"
           value={form.contenido}
           onChange={(e) => setForm({ ...form, contenido: e.target.value })}
           required
           rows="5"
           style={{ display: "block", width: "100%", marginBottom: 10 }}
-        /> */}
+        />
         <button type="submit">{editId ? "Actualizar" : "Crear"}</button>
       </form>
 
